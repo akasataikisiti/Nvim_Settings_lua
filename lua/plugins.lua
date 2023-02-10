@@ -87,12 +87,13 @@ packer.startup(function(use)
 
   use({
     'skanehira/denops-translate.vim',
-    cmd = 'Translate',
     requires = {
       'vim-denops/denops.vim',
     }
   })
 
   use 'vim-jp/vimdoc-ja'
+
+  use 'tpope/vim-fugitive'
 
 end)
