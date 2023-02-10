@@ -74,6 +74,16 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["ChatGPT.nvim"] = {
+    loaded = true,
+    path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/ChatGPT.nvim",
+    url = "https://github.com/jackMort/ChatGPT.nvim"
+  },
+  ["Comment.nvim"] = {
+    loaded = true,
+    path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/Comment.nvim",
+    url = "https://github.com/numToStr/Comment.nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -155,6 +165,11 @@ _G.packer_plugins = {
     path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/neosolarized.nvim",
     url = "https://github.com/svrana/neosolarized.nvim"
   },
+  ["nui.nvim"] = {
+    loaded = true,
+    path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
+  },
   ["null-ls.nvim"] = {
     loaded = true,
     path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
@@ -195,6 +210,11 @@ _G.packer_plugins = {
     path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/nvim-snippy",
     url = "https://github.com/dcampos/nvim-snippy"
   },
+  ["nvim-surround"] = {
+    loaded = true,
+    path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/nvim-surround",
+    url = "https://github.com/kylechui/nvim-surround"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
@@ -204,6 +224,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
     url = "https://github.com/windwp/nvim-ts-autotag"
+  },
+  ["nvim-ts-context-commentstring"] = {
+    loaded = true,
+    path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/nvim-ts-context-commentstring",
+    url = "https://github.com/JoosepAlviste/nvim-ts-context-commentstring"
   },
   ["nvim-web-devicons"] = {
     loaded = true,

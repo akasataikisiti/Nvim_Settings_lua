@@ -1,0 +1,10 @@
+{
+  "introduce myself": {
+    "prefix": "myn",
+    "body": ["hello myname is $1. It's a pleasure to meet you."]
+  },
+  "snip2": {
+    "prefix": "all2",
+    "body": ["multi $1", "line $2", "snippet$0"]
+  }
+}

@@ -1,11 +1,12 @@
 local status, cmp = pcall(require, "cmp")
 if (not status) then return end
 local lspkind = require 'lspkind'
+local luasnip = require 'luasnip'
 
 cmp.setup({
   snippet = {
     expand = function(args)
-      require('snippy').expand_snippet(args.body)
+      require('luasnip').lsp_expand(args.body)
     end,
   },
   mapping = cmp.mapping.preset.insert({
@@ -17,11 +18,26 @@ cmp.setup({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true
     }),
+    ["<C-j>"] = cmp.mapping(function(fallback)
+      if luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+
+    ["<C-K>"] = cmp.mapping(function(fallback)
+      if luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'buffer' },
-    { name = 'snippy' },
+    { name = 'luasnip' },
   }),
   formatting = {
     format = lspkind.cmp_format({ wirth_text = false, maxwiddth = 50 })

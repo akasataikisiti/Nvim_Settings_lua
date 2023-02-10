@@ -11,11 +11,17 @@ local fb_actions = require "telescope".extensions.file_browser.actions
 
 telescope.setup {
   defaults = {
+    layout_config = {
+      scroll_speed = 6,
+    },
     mappings = {
       n = {
-        ["q"] = actions.close
+        ["q"] = actions.close,
+        ["<c-f>"] = actions.results_scrolling_down,
+        ["<c-e>"] = actions.results_scrolling_up,
       },
     },
+    file_ignore_patterns = { "^.git/" },
   },
   extensions = {
     file_browser = {
@@ -31,6 +37,8 @@ telescope.setup {
           -- your custom normal mode mappings
           ["N"] = fb_actions.create,
           ["h"] = fb_actions.goto_parent_dir,
+          ["."] = fb_actions.toggle_hidden,
+          ["p"] = fb_actions.copy,
           ["/"] = function()
             vim.cmd('startinsert')
           end
@@ -75,4 +83,7 @@ vim.keymap.set("n", "sf", function()
     initial_mode = "normal",
     layout_config = { height = 40 }
   })
+end)
+vim.keymap.set('n', '<Leader>m', function()
+  builtin.oldfiles()
 end)

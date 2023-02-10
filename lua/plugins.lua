@@ -15,8 +15,12 @@ packer.startup(function(use)
   use 'kyazdani42/nvim-web-devicons' --File icons
   use 'glepnir/lspsaga.nvim' -- LSP UIs
   use 'nvim-lualine/lualine.nvim' -- StatusLine
-  use 'dcampos/nvim-snippy' -- Snipet
-  use 'dcampos/cmp-snippy' -- nvim-cmp source for snippy
+  use {
+    'L3MON4D3/LuaSnip',
+    require("luasnip.loaders.from_vscode").lazy_load({ paths = "~/.config/nvim/my_snippets" })
+  }
+  use 'saadparwaiz1/cmp_luasnip'
+  use "rafamadriz/friendly-snippets"
   use 'onsails/lspkind-nvim' -- vscode-like pictograms
   use 'hrsh7th/cmp-buffer' -- nvim-cmp source for buffer words
   use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
@@ -46,6 +50,11 @@ packer.startup(function(use)
   use 'dinhhuy258/git.nvim' -- For git blame & browser
   use 'karb94/neoscroll.nvim' -- Smooth scrolling
   use "terrortylor/nvim-comment" -- Comment out
+  use { 'numToStr/Comment.nvim',
+    requires = {
+      'JoosepAlviste/nvim-ts-context-commentstring'
+    }
+  }
   use {
     'kylechui/nvim-surround',
     tag = '*',
@@ -65,5 +74,24 @@ packer.startup(function(use)
     config = [[ require('config.vimwiki') ]],
   }
 
+  use({
+    "jackMort/ChatGPT.nvim",
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim"
+    }
+  })
+
+  use 'chentoast/marks.nvim'
+
+  use({
+    'skanehira/denops-translate.vim',
+    requires = {
+      'vim-denops/denops.vim',
+    }
+  })
+
+  use 'vim-jp/vimdoc-ja'
 
 end)
