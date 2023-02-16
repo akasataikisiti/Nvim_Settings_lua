@@ -75,14 +75,22 @@ time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["ChatGPT.nvim"] = {
-    loaded = true,
-    path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/ChatGPT.nvim",
+    commands = { "ChatGPT" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/opt/ChatGPT.nvim",
     url = "https://github.com/jackMort/ChatGPT.nvim"
   },
   ["Comment.nvim"] = {
     loaded = true,
     path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/Comment.nvim",
     url = "https://github.com/numToStr/Comment.nvim"
+  },
+  LuaSnip = {
+    loaded = true,
+    path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/LuaSnip",
+    url = "https://github.com/L3MON4D3/LuaSnip"
   },
   ["cmp-buffer"] = {
     loaded = true,
@@ -104,15 +112,30 @@ _G.packer_plugins = {
     path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
-  ["cmp-snippy"] = {
+  cmp_luasnip = {
     loaded = true,
-    path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/cmp-snippy",
-    url = "https://github.com/dcampos/cmp-snippy"
+    path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
+    url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["colorbuddy.nvim"] = {
     loaded = true,
     path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/colorbuddy.nvim",
     url = "https://github.com/tjdevries/colorbuddy.nvim"
+  },
+  ["denops-translate.vim"] = {
+    loaded = true,
+    path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/denops-translate.vim",
+    url = "https://github.com/skanehira/denops-translate.vim"
+  },
+  ["denops.vim"] = {
+    loaded = true,
+    path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/denops.vim",
+    url = "https://github.com/vim-denops/denops.vim"
+  },
+  ["friendly-snippets"] = {
+    loaded = true,
+    path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/friendly-snippets",
+    url = "https://github.com/rafamadriz/friendly-snippets"
   },
   ["git.nvim"] = {
     loaded = true,
@@ -144,6 +167,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
+  ["marks.nvim"] = {
+    loaded = true,
+    path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/marks.nvim",
+    url = "https://github.com/chentoast/marks.nvim"
   },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
@@ -205,11 +233,6 @@ _G.packer_plugins = {
     path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
-  ["nvim-snippy"] = {
-    loaded = true,
-    path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/nvim-snippy",
-    url = "https://github.com/dcampos/nvim-snippy"
-  },
   ["nvim-surround"] = {
     loaded = true,
     path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/nvim-surround",
@@ -240,6 +263,11 @@ _G.packer_plugins = {
     path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
+  playground = {
+    loaded = true,
+    path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/playground",
+    url = "https://github.com/nvim-treesitter/playground"
+  },
   ["plenary.nvim"] = {
     loaded = true,
     path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/plenary.nvim",
@@ -260,6 +288,19 @@ _G.packer_plugins = {
     path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["vim-fugitive"] = {
+    commands = { "G" },
+    loaded = false,
+    needs_bufread = true,
+    only_cond = false,
+    path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/opt/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vimdoc-ja"] = {
+    loaded = true,
+    path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/vimdoc-ja",
+    url = "https://github.com/vim-jp/vimdoc-ja"
+  },
   vimwiki = {
     commands = { "VimwikiIndex" },
     config = { " require('config.vimwiki') " },
@@ -279,6 +320,20 @@ time([[Config for hop.nvim]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
+pcall(vim.api.nvim_create_user_command, 'G', function(cmdargs)
+          require('packer.load')({'vim-fugitive'}, { cmd = 'G', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'vim-fugitive'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('G ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'ChatGPT', function(cmdargs)
+          require('packer.load')({'ChatGPT.nvim'}, { cmd = 'ChatGPT', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'ChatGPT.nvim'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('ChatGPT ', 'cmdline')
+      end})
 pcall(vim.api.nvim_create_user_command, 'VimwikiIndex', function(cmdargs)
           require('packer.load')({'vimwiki'}, { cmd = 'VimwikiIndex', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,

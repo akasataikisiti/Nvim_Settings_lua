@@ -32,6 +32,8 @@ packer.startup(function(use)
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   }
+  use 'nvim-treesitter/playground'
+
   use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
   use 'MunifTanjim/prettier.nvim' -- Prettier plugin for Neovim's built-in LSP client
   use 'williamboman/mason.nvim'
@@ -76,6 +78,7 @@ packer.startup(function(use)
 
   use({
     "jackMort/ChatGPT.nvim",
+    cmd = 'ChatGPT',
     requires = {
       "MunifTanjim/nui.nvim",
       "nvim-lua/plenary.nvim",
@@ -94,6 +97,11 @@ packer.startup(function(use)
 
   use 'vim-jp/vimdoc-ja'
 
-  use 'tpope/vim-fugitive'
+  use({
+    'tpope/vim-fugitive',
+    cmd = 'G',
+  })
+
+  use 'stevearc/aerial.nvim'
 
 end)

@@ -4,8 +4,6 @@ if (not status) then
   return
 end
 
-print('chatgpt read')
-
 chat.setup({
   welcome_message = "Welcom to ChatGPT", -- set to "" if you don't like the fancy godot robot
   loading_text = "loading",

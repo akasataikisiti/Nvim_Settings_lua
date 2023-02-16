@@ -58,9 +58,14 @@ keymap.set('n', '<Leader>ev', ':e ~/.config/nvim/init.lua <CR>')
 keymap.set('n', '<Leader>cv', ':e ~/cheatsheet/vim.txt <CR>')
 keymap.set('n', '<Leader>kv', ':e ~/.config/karabiner/karabiner.json <CR>')
 
--- ターミナルを開く
--- keymap.set('n', 'vt', ':vs :te')
--- ターミナル使いやすく（あとで設定する）
+-- 選択範囲の移動
+keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 
--- vimwikiを開く
-keymap.set('n', '<Leader>ww', ':VimwikiIndex <CR>')
+-- ターミナルを開く
+vim.cmd [[
+:tnoremap <c-[> <C-\><C-n>
+command! -nargs=* Ut split | wincmd j | resize 20 | terminal <args>
+command! -nargs=* T vsplit | wincmd l | terminal <args>
+autocmd TermOpen * startinsert
+]]
