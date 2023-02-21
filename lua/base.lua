@@ -29,6 +29,7 @@ vim.opt.path:append { '**' } -- Find files - Search down into subfolders
 vim.opt.wildignore:append { '*/node_modules/*' }
 vim.opt.swapfile = false
 
+
 -- Under curl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])

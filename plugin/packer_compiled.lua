@@ -278,6 +278,11 @@ _G.packer_plugins = {
     path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/prettier.nvim",
     url = "https://github.com/MunifTanjim/prettier.nvim"
   },
+  ["symbols-outline.nvim"] = {
+    loaded = true,
+    path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/symbols-outline.nvim",
+    url = "https://github.com/simrat39/symbols-outline.nvim"
+  },
   ["telescope-file-browser.nvim"] = {
     loaded = true,
     path = "/Users/mac_kosuke/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",

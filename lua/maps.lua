@@ -24,9 +24,6 @@ keymap.set('n', 's>', '<C-w>>')
 keymap.set('n', 's<', '<C-w><')
 keymap.set('n', 's=', '<C-w>=')
 
--- New vertical split tab
-keymap.set('n', 'sv', ':vsplit<CR><C-w>w')
-
 -- Select all
 keymap.set('n', '<C-a>', 'gg<S-v>G')
 
@@ -59,8 +56,11 @@ keymap.set('n', '<Leader>cv', ':e ~/cheatsheet/vim.txt <CR>')
 keymap.set('n', '<Leader>kv', ':e ~/.config/karabiner/karabiner.json <CR>')
 
 -- 選択範囲の移動
-keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
-keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+keymap.set('v', '<c-j>', ":m '>+1<CR>gv=gv")
+keymap.set('v', '<c-k>', ":m '<-2<CR>gv=gv")
+
+-- select delete paste
+keymap.set("x", "<leader>p", "\"_dP")
 
 -- ターミナルを開く
 vim.cmd [[

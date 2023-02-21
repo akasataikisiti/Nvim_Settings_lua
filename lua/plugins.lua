@@ -17,6 +17,7 @@ packer.startup(function(use)
   use 'nvim-lualine/lualine.nvim' -- StatusLine
   use {
     'L3MON4D3/LuaSnip',
+    require("luasnip.loaders.from_vscode").lazy_load(),
     require("luasnip.loaders.from_vscode").lazy_load({ paths = "~/.config/nvim/my_snippets" })
   }
   use 'saadparwaiz1/cmp_luasnip'
@@ -102,6 +103,8 @@ packer.startup(function(use)
     cmd = 'G',
   })
 
-  use 'stevearc/aerial.nvim'
-
+  use({
+    'simrat39/symbols-outline.nvim', -- show outline
+    cmd = 'SymbolsOutline'
+  })
 end)
