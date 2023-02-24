@@ -105,4 +105,6 @@ packer.startup(function(use)
 
   use 'simrat39/symbols-outline.nvim' -- show outline
   use 'anuvyklack/pretty-fold.nvim' -- create folding settings
+
+  use "lukas-reineke/indent-blankline.nvim"
 end)

@@ -49,11 +49,12 @@ vim.api.nvim_create_user_command(
   {}
 )
 keymap.set('n', 'gt', '<Cmd>TabnewOrGoNext <CR>')
+keymap.set('n', '<leader>c', '<Cmd>tabclose <CR>')
 
 -- 設定ファイル、チートシート、カラビナ設定ファイル開く
 keymap.set('n', '<Leader>ev', ':e ~/.config/nvim/init.lua <CR>')
-keymap.set('n', '<Leader>cv', ':e ~/cheatsheet/vim.txt <CR>')
-keymap.set('n', '<Leader>kv', ':e ~/.config/karabiner/karabiner.json <CR>')
+keymap.set('n', '<Leader>ec', ':e ~/cheatsheet/vim.txt <CR>')
+keymap.set('n', '<Leader>ek', ':e ~/.config/karabiner/karabiner.json <CR>')
 
 -- 選択範囲の移動
 keymap.set('v', '<c-j>', ":m '>+1<CR>gv=gv")
