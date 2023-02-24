@@ -9,8 +9,8 @@ vim.cmd [[packadd packer.nvim]]
 packer.startup(function(use)
   use 'wbthomason/packer.nvim'
   use {
-    'svrana/neosolarized.nvim',
-    requires = { 'tjdevries/colorbuddy.nvim' }
+      'svrana/neosolarized.nvim',
+      requires = { 'tjdevries/colorbuddy.nvim' }
   }
   use 'kyazdani42/nvim-web-devicons' --File icons
   use 'glepnir/lspsaga.nvim' -- LSP UIs
@@ -30,8 +30,8 @@ packer.startup(function(use)
   use 'hrsh7th/nvim-cmp' -- Completion
   use 'neovim/nvim-lspconfig' -- Configlations for Nvim LSP
   use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
+      'nvim-treesitter/nvim-treesitter',
+      run = ':TSUpdate'
   }
   use 'nvim-treesitter/playground'
 
@@ -48,33 +48,35 @@ packer.startup(function(use)
   use 'nvim-telescope/telescope-file-browser.nvim'
   use 'akinsho/nvim-bufferline.lua'
   use 'norcalli/nvim-colorizer.lua'
+  use 'monkoose/matchparen.nvim' -- More usefull match pair function
+  use 'lukas-reineke/indent-blankline.nvim' -- show indent
 
   use 'lewis6991/gitsigns.nvim'
   use 'dinhhuy258/git.nvim' -- For git blame & browser
   use 'karb94/neoscroll.nvim' -- Smooth scrolling
   use "terrortylor/nvim-comment" -- Comment out
   use { 'numToStr/Comment.nvim',
-    requires = {
-      'JoosepAlviste/nvim-ts-context-commentstring'
-    }
+      requires = {
+          'JoosepAlviste/nvim-ts-context-commentstring'
+      }
   }
   use {
-    'kylechui/nvim-surround',
-    tag = '*',
-  }
-
-  use {
-    'phaazon/hop.nvim',
-    branch = 'v2', -- optional but strongly recommended
-    config = function()
-      -- you can configure Hop the way you like here; see :h hop-config
-    end
+      'kylechui/nvim-surround',
+      tag = '*',
   }
 
   use {
-    'vimwiki/vimwiki',
-    cmd = 'VimwikiIndex',
-    config = [[ require('config.vimwiki') ]],
+      'phaazon/hop.nvim',
+      branch = 'v2', -- optional but strongly recommended
+      config = function()
+        -- you can configure Hop the way you like here; see :h hop-config
+      end
+  }
+
+  use {
+      'vimwiki/vimwiki',
+      cmd = 'VimwikiIndex',
+      config = [[ require('config.vimwiki') ]],
   }
 
   use({
@@ -90,10 +92,10 @@ packer.startup(function(use)
   use 'chentoast/marks.nvim'
 
   use({
-    'skanehira/denops-translate.vim',
-    requires = {
-      'vim-denops/denops.vim',
-    }
+      'skanehira/denops-translate.vim',
+      requires = {
+          'vim-denops/denops.vim',
+      }
   })
 
   use 'vim-jp/vimdoc-ja'
@@ -106,5 +108,14 @@ packer.startup(function(use)
   use 'simrat39/symbols-outline.nvim' -- show outline
   use 'anuvyklack/pretty-fold.nvim' -- create folding settings
 
-  use "lukas-reineke/indent-blankline.nvim"
+  use {
+      "jcdickinson/codeium.nvim",
+      requires = {
+          "nvim-lua/plenary.nvim",
+          "MunifTanjim/nui.nvim",
+          "hrsh7th/nvim-cmp",
+      },
+  }
+  use "/home/ksk/work/test_lua/stackmap.nvim"
+  use 'nvim-treesitter/playground'
 end)

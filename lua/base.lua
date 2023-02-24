@@ -36,8 +36,8 @@ vim.cmd([[let &t_Ce = "\e[4:0m"]])
 -- but this doesn't work on iTerm2
 
 vim.api.nvim_create_autocmd("InsertLeave", {
-  pattern = '*',
-  command = "set nopaste"
+    pattern = '*',
+    command = "set nopaste"
 })
 
 -- コメント自動挿入オプション有効化 -> ゆくゆくは拡張子ごとに設定したい
@@ -64,3 +64,12 @@ vim.g.loaded_tarPlugin          = 1
 vim.g.loaded_tutor_mode_plugin  = 1 -- Tutorial mode
 vim.g.loaded_zipPlugin          = 1
 vim.g.skip_loading_mswin        = 1 -- MSwin用の何か
+
+-- 注意 wsl用
+-- yankしたときにWindowsクリップボードに共有
+vim.cmd [[
+augroup Yank
+au!
+autocmd TextYankPost * :call system('clip.exe',@")
+augroup END
+]]

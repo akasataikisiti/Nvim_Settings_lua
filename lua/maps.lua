@@ -38,15 +38,15 @@ keymap.set('n', 'sK', '<C-w>t<C-w>K')
 -- タブ１つしか無かったら新しいタブ開く、２つ以上あったら次のタブに移動
 
 vim.api.nvim_create_user_command(
-  'TabnewOrGoNext',
-  function()
-    if 1 == vim.fn.tabpagenr('$') then
-      vim.cmd('tabedit')
-    else
-      vim.cmd('tabnext')
-    end
-  end,
-  {}
+    'TabnewOrGoNext',
+    function()
+      if 1 == vim.fn.tabpagenr('$') then
+        vim.cmd('tabedit')
+      else
+        vim.cmd('tabnext')
+      end
+    end,
+    {}
 )
 keymap.set('n', 'gt', '<Cmd>TabnewOrGoNext <CR>')
 keymap.set('n', '<leader>c', '<Cmd>tabclose <CR>')
@@ -56,9 +56,19 @@ keymap.set('n', '<Leader>ev', ':e ~/.config/nvim/init.lua <CR>')
 keymap.set('n', '<Leader>ec', ':e ~/cheatsheet/vim.txt <CR>')
 keymap.set('n', '<Leader>ek', ':e ~/.config/karabiner/karabiner.json <CR>')
 
+<<<<<<< Updated upstream
 -- 選択範囲の移動
 keymap.set('v', '<c-j>', ":m '>+1<CR>gv=gv")
 keymap.set('v', '<c-k>', ":m '<-2<CR>gv=gv")
+=======
+-- visualモードでの上下移動
+vim.keymap.set("x", "<c-j>", ":m '>+1<CR>gv=gv")
+vim.keymap.set("x", "<c-k>", ":m '>-2<CR>gv=gv")
+
+-- ターミナルを開く
+-- keymap.set('n', 'vt', ':vs :te')
+-- ターミナル使いやすく（あとで設定する）
+>>>>>>> Stashed changes
 
 -- select delete paste
 keymap.set("x", "<leader>p", "\"_dP")
